@@ -38,7 +38,7 @@ logger = logging.getLogger(ct.LOGGER_NAME)
 ############################################################
 try:
     # 初期化処理（「initialize.py」の「initialize」関数を実行）
-    __import__('pysqlite3')
+        __import__('pysqlite3')
     import sys
     sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
     initialize()

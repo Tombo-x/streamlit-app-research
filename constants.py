@@ -17,6 +17,7 @@ from langchain_community.document_loaders.csv_loader import CSVLoader
 # 画面表示系
 # ==========================================
 APP_NAME = "社内情報特化型生成AI検索アプリ"
+Choice_Mode = "利用目的"
 ANSWER_MODE_1 = "社内文書検索"
 ANSWER_MODE_2 = "社内問い合わせ"
 CHAT_INPUT_HELPER_TEXT = "こちらからメッセージを送信してください。"
@@ -34,7 +35,9 @@ LOG_DIR_PATH = "./logs"
 LOGGER_NAME = "ApplicationLog"
 LOG_FILE = "application.log"
 APP_BOOT_MESSAGE = "アプリが起動されました。"
-
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+RETRIEVER_TOP_K = 5
 
 # ==========================================
 # LLM設定系
@@ -50,7 +53,8 @@ RAG_TOP_FOLDER_PATH = "./data"
 SUPPORTED_EXTENSIONS = {
     ".pdf": PyMuPDFLoader,
     ".docx": Docx2txtLoader,
-    ".csv": lambda path: CSVLoader(path, encoding="utf-8")
+    ".csv": lambda path: CSVLoader(path, encoding="utf-8"),
+    ".txt": TextLoader
 }
 WEB_URL_LOAD_TARGETS = [
     "https://generative-ai.web-camp.io/"
